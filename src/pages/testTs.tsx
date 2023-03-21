@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 //PROPS
@@ -61,16 +61,16 @@ interface State {
 }
 
 const Button = styled.button`
-    background-color: blue;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
 
-    &:hover {
-        background-color: lightblue;
-    }
-`
+  &:hover {
+    background-color: lightblue;
+  }
+`;
 
 const MyComponent = () => {
   const [state, setState] = useState<State>({ count: 0 });
@@ -78,7 +78,9 @@ const MyComponent = () => {
   return (
     <div>
       <p>Count: {state.count}</p>
-       <Button onClick={() => setState({count: state.count  +1})}>Increment</Button>
+      <Button onClick={() => setState({ count: state.count + 1 })}>
+        Increment
+      </Button>
     </div>
   );
 };
