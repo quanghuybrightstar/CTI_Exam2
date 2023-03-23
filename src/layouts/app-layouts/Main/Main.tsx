@@ -5,9 +5,9 @@ import { Container } from '@/src/store/globalStyle';
 import styled from 'styled-components';
 import { dataRestaurants, bookingURLImg } from '@/src/store/data';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { RiDoorFill } from 'react-icons/ri';
 import { AiFillClockCircle, AiFillHeart } from 'react-icons/ai';
 import { StyledButton } from '@/src/store/globalStyle';
+import {BsFillDoorOpenFill} from 'react-icons/bs';
 
 const StyledRow = styled(Row)``;
 
@@ -50,10 +50,10 @@ const RestaurantInfoWrapprer = styled.div`
 
 const RestaurantInfoText = styled.div`
   font-size: 0.8rem;
-  margin-left: 0.8rem;
+  margin-left: 1.1rem;
 `;
 
-const RestaurantStausText = styled.div`
+const RestaurantStatusText = styled.div`
   color: #1dac0e;
   font-size: 0.8rem;
   margin-left: 0.8rem;
@@ -69,7 +69,7 @@ const RestaurantTimeContainer = styled.div`
   justify-content: space-between;
   flex: 1;
   margin-left: 0.8rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 `;
 
 const RestaurantTimeContainerFirst = styled.div`
@@ -197,14 +197,14 @@ const Main: React.FC = () => {
                     </RestaurantInfoWrapprer>
 
                     <RestaurantInfoWrapprer>
-                      <RiDoorFill size={'1.5rem'} />
-                      <RestaurantStausText>
+                      <BsFillDoorOpenFill size={'1.3rem'} />
+                      <RestaurantStatusText>
                         {restaurant.statusOpen}
-                      </RestaurantStausText>
+                      </RestaurantStatusText>
                     </RestaurantInfoWrapprer>
 
                     <RestaurantInfoWrapprer>
-                      <AiFillClockCircle size={'1.5rem'} />
+                      <AiFillClockCircle size={'1.3rem'} />
 
                       <RestaurantTimeContainer>
                         <RestaurantTimeContainerFirst>
