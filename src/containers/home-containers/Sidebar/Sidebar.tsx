@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { Select, Button, Row, Col } from 'antd';
 import { List } from 'antd';
-import { Container } from '@/src/store/globalStyle';
+import { Container } from '@/src/constants/globalStyle';
 import { dataCategories } from '@/src/store/data';
 import styled from 'styled-components';
 

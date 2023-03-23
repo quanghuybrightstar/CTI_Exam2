@@ -6,7 +6,7 @@ import { GoSearch } from 'react-icons/go';
 import styled from 'styled-components';
 import { cityList } from '@/src/store/data';
 import { AiOutlineDown } from 'react-icons/ai';
-import { StyledButton } from '@/src/store/globalStyle';
+import { StyledButton } from '@/src/constants/globalStyle';
 
 const { Option } = Select;
 

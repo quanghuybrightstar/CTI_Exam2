@@ -4,7 +4,7 @@ import { Select, Button, Row, Col } from 'antd';
 import styled from 'styled-components';
 import * as data from '@/src/store/data';
 
-import { Container } from '@/src/store/globalStyle';
+import { Container } from '@/src/constants/globalStyle';
 
 const StyledNameTitle = styled.div`
   font-weight: 700;

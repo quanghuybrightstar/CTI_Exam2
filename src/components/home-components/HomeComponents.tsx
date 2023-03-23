@@ -1,10 +1,7 @@
-import Header from './Header';
-import Main from './Main';
-import Slider from './Slider';
-import Footer from './Footer';
+import { Header, Slider, Main, Footer } from '@/src/containers/home-containers';
 import styled from 'styled-components';
 
-const HomeLayout = () => {
+const HomeComponent = () => {
   const StyledLayout = styled.div`
     background-color: white;
     overflow-x: hidden;
@@ -20,4 +17,4 @@ const HomeLayout = () => {
   );
 };
 
-export default HomeLayout;
+export default HomeComponent;

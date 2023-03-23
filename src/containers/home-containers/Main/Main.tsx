@@ -1,13 +1,13 @@
 import React from 'react';
 import { Row, Col, Image, Button } from 'antd';
 import Sidebar from '../Sidebar';
-import { Container } from '@/src/store/globalStyle';
+import { Container } from '@/src/constants/globalStyle';
 import styled from 'styled-components';
 import { dataRestaurants, bookingURLImg } from '@/src/store/data';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { AiFillClockCircle, AiFillHeart } from 'react-icons/ai';
-import { StyledButton } from '@/src/store/globalStyle';
-import {BsFillDoorOpenFill} from 'react-icons/bs';
+import { StyledButton } from '@/src/constants/globalStyle';
+import { BsFillDoorOpenFill } from 'react-icons/bs';
 
 const StyledRow = styled(Row)``;
 
@@ -157,22 +157,22 @@ const IconWrapper = styled.div`
 
 const IconHeartWrapper = styled.div`
   padding: 0.2rem 0.4rem 0.06rem;
-  background: #F24405;
+  background: #f24405;
   border-radius: 50%;
 `;
 
 const SaleOffWrapper = styled.div`
-font-size: 0.7rem;
-color: white;
-background: #1DAC0E;
-position: absolute;
-padding: 0.3rem 0.5rem;
-border-radius: 0.6rem;
-border: #1DAC0E;
-position: absolute;
-right: 0;
-font-weight: 700;
-`
+  font-size: 0.7rem;
+  color: white;
+  background: #1dac0e;
+  position: absolute;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.6rem;
+  border: #1dac0e;
+  position: absolute;
+  right: 0;
+  font-weight: 700;
+`;
 
 const Main: React.FC = () => {
   return (
@@ -231,15 +231,12 @@ const Main: React.FC = () => {
 
                   <IconWrapper>
                     <IconHeartWrapper>
-                      <AiFillHeart style = {{color: 'white'}} size = {'1.2rem'}/>
+                      <AiFillHeart style={{ color: 'white' }} size={'1.2rem'} />
                     </IconHeartWrapper>
 
-                    <SaleOffWrapper>
-                        {restaurant.saleOff}
-                    </SaleOffWrapper>
+                    <SaleOffWrapper>{restaurant.saleOff}</SaleOffWrapper>
                   </IconWrapper>
                 </ItemContainer>
-
               </StyledColRestaurant>
             ))}
 

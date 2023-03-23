@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import HomeLayout from '../layouts/app-layouts/HomeLayout';
+import HomeComponent from '@/src/components/home-components/HomeComponents';
 import styled from 'styled-components';
 
 const StyledHTML = styled.div`
-  font-size: 62.5%!important;
+  font-size: 62.5% !important;
   scroll-behavior: smooth;
 `;
 
@@ -28,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/icon.png" />
       </Head>
       <Body>
-        <HomeLayout></HomeLayout>
+        <HomeComponent></HomeComponent>
       </Body>
     </StyledHTML>
   );
