@@ -1,24 +1,23 @@
-import classNames from 'classnames/bind';
-import styles from './HomeLayout.module.scss';
 import Header from './Header';
-import { Layout } from 'antd';
 import Main from './Main';
 import Slider from './Slider';
 import Footer from './Footer';
+import styled from 'styled-components';
 
-const cx = classNames.bind(styles);
+const HomeLayout = () => {
+  const StyledLayout = styled.div`
+    background-color: white;
+    overflow-x: hidden;
+  `;
 
-const AppLayout = () => {
   return (
-    <Layout>
-      <div className={cx('app_container')}>
-        <Header></Header>
-        <Slider></Slider>
-        <Main></Main>
-        <Footer></Footer>
-      </div>
-    </Layout>
+    <StyledLayout>
+      <Header></Header>
+      <Slider></Slider>
+      <Main></Main>
+      <Footer></Footer>
+    </StyledLayout>
   );
 };
 
-export default AppLayout;
+export default HomeLayout;

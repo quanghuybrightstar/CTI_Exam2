@@ -1,76 +1,70 @@
-import classNames from 'classnames/bind';
 import Image from 'next/image';
-import styles from './Sidebar.module.scss';
-import React from 'react';
-import { Select, Button } from 'antd';
+import React, { useState } from 'react';
+import { Select, Button, Row, Col } from 'antd';
+import { List } from 'antd';
+import { Container } from '@/src/store/globalStyle';
+import { dataCategories } from '@/src/store/data';
+import styled from 'styled-components';
 
-const cx = classNames.bind(styles);
+const StyledCol = styled(Col)`
+  position: relative;
+  padding: 2.5rem 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: #d9d9d9;
+  }
 
-const Sidebar = () => {
-    return (
-        <div className={'grid__column-3-12'}>
-            <div className={cx('sidebar-container')}>
-                <ul className={cx('category__list')}>
-                    <li className={cx('category__item', 'category__item--active')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>All</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Fast Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Take-away</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                    <li className={cx('category__item')}>
-                        <Image src={'/images/allProduct.png'} alt = 'All Product' width={32} height= {32}></Image>
-                        <p className={cx('category__title')}>Chinese Food</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+  ::-webkit-scrollbar-thumb {
+    background: #ff881d;
+  }
+
+  border-left: 1px solid #d9d9d9;
+  box-shadow: 1px 2px #d9d9d9;
+  background: white;
+`;
+
+const CategoryItem = styled.div`
+  display: flex;
+  flex-decoration: row;
+  align-items: center;
+  background: ${(props) => (props.key === 1 ? '#ff881d' : 'white')};
+  padding: 0.5rem;
+  background: white;
+  border-radius: 0.6rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffc999;
+  }
+`;
+
+const CategoryItemName = styled.p`
+  margin: 0 1rem;
+  font-size: 1rem;
+`;
+
+const Sidebar: React.FC = () => {
+  return (
+    <StyledCol span={6}>
+      {dataCategories.map((category: ICategoryItem) => (
+        <CategoryItem key={category.id}>
+          <Image
+            src={category.urlImage}
+            alt={category.name}
+            width={32}
+            height={32}
+            style={{ borderRadius: '50%' }}
+          ></Image>
+          <CategoryItemName>{category.name}</CategoryItemName>
+        </CategoryItem>
+      ))}
+    </StyledCol>
+  );
+};
 
 export default Sidebar;

@@ -1,120 +1,145 @@
-import classNames from 'classnames/bind';
 import Image from 'next/image';
-import styles from './Header.module.scss';
 import React from 'react';
 import { Select, Button } from 'antd';
 import Input from 'rc-input';
 import { GoSearch } from 'react-icons/go';
+import styled from 'styled-components';
+import { cityList } from '@/src/store/data';
+import { AiOutlineDown } from 'react-icons/ai';
+import { StyledButton } from '@/src/store/globalStyle';
 
-const cx = classNames.bind(styles);
 const { Option } = Select;
 
+const HeaderContainer = styled.div`
+  padding: 1.3rem 4rem;
+  background-color: white;
+  width: 100%;
+  border-bottom: 1px solid #e0e1e0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const NavbarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-left: 7rem;
+`;
+
+const StyledSelect = styled(Select)`
+  .ant-select-arrow {
+    color: #ff881d !important;
+  }
+
+  .ant-select-selector {
+    border: 1px solid #ff881d !important;
+    align-items: center;
+  }
+`;
+
+const InputWrapper = styled.div`
+  border: 1px solid #e0e1e0;
+  padding: 0.5rem 1.5rem;
+  background-color: #fbfbfb;
+  display: flex;
+  flex: 0.8;
+  align-items: center;
+  border-radius: 0.6rem;
+  margin-left: 2.3rem;
+`;
+
+const StyledInput = styled(Input)`
+  background-color: #fbfbfb;
+  border: none;
+  outline: none;
+  margin-left: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0.3rem 0;
+  width: 100%;
+`;
+
+const StyledLogin = styled.a`
+  color: #007aff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3rem;
+  font-style: normal;
+  text-align: center;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  border-bottom: 1px solid #007aff;
+`;
+
+const LangagueSelect = styled.div`
+  border: 1px solid #ff881d;
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-decoration: row;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const NameLanguage = styled.p`
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0 0.5rem;
+`;
+
 const Header: React.FC = () => {
-  const cityList = [
-    {
-      value: '1',
-      label: 'Ha noi',
-    },
-    {
-      value: '2',
-      label: 'TP.HCM',
-    },
-    {
-      value: '3',
-      label: 'Da Nang',
-    },
-    {
-      value: '4',
-      label: 'Nam Dinh',
-    },
-    {
-      value: '5',
-      label: 'Hoi An',
-    },
-  ];
-
   return (
-    <div className={cx('header_container')}>
-      <div className={cx('container-inner')}>
-        <a href="#" className={cx('header_logo')}>
+    <HeaderContainer>
+      <Image
+        src="/images/logo.png"
+        alt="Logo Capachi"
+        width={138}
+        height={41}
+      ></Image>
+
+      <NavbarContainer>
+        <StyledSelect
+          showSearch
+          placeholder="Chọn thành phố"
+          defaultValue={'Ha noi'}
+          optionFilterProp="children"
+          filterOption={(input, option) =>
+            (option?.label ?? '').includes(input)
+          }
+          filterSort={(optionA, optionB) =>
+            (optionA?.label ?? '')
+              .toLowerCase()
+              .localeCompare((optionB?.label ?? '').toLowerCase())
+          }
+          options={cityList}
+        />
+
+        <InputWrapper>
+          <GoSearch style={{ color: '#ff881d', fontSize: '0.9rem' }} />
+          <StyledInput placeholder="Nhập từ khóa ... "></StyledInput>
+        </InputWrapper>
+
+        <StyledButton>Order</StyledButton>
+
+        <LangagueSelect>
           <Image
-            src="/images/logo.png"
-            alt="Logo Capachi"
-            width={138}
-            height={41}
-          />
-        </a>
-        <ul className={cx('header__nav')}>
-          <li className={cx('nav__item')}>
-            <Select
-              showSearch
-              className={cx('select')}
-              placeholder="Chọn thành phố"
-              defaultValue={'Ha noi'}
-              optionFilterProp="children"
-              filterOption={(input, option) =>
-                (option?.label ?? '').includes(input)
-              }
-              filterSort={(optionA, optionB) =>
-                (optionA?.label ?? '')
-                  .toLowerCase()
-                  .localeCompare((optionB?.label ?? '').toLowerCase())
-              }
-              options={cityList}
-            />
-          </li>
+            src="/images/vietnamese.png"
+            alt="Vietnamese language"
+            width={28}
+            height={20}
+          ></Image>
 
-          <li className={cx('input-wrap')}>
-            <GoSearch className={cx('search-icon')} />
-            <Input
-              className={cx('nav__input')}
-              placeholder="Nhập từ khóa ... "
-            ></Input>
-          </li>
+          <NameLanguage>VIE</NameLanguage>
 
-          <li className={cx('nav__item')}>
-            <Button className={cx('submit-btn')}>Order</Button>
-          </li>
+          <AiOutlineDown style={{ color: '#ff881d', fontSize: '0.9rem' }} />
+        </LangagueSelect>
 
-          <li className={cx('nav__item')}>
-            <Select
-              className={cx('select')}
-              defaultValue = {
-                'EN'
-              }
-              placeholder="Chọn ngôn ngữ"
-              optionFilterProp="children"
-            >
-              <Option className = {cx('language-options')}>
-                <Image
-                  src={'/images/english.png'}
-                  alt="English Langague"
-                  width={28}
-                  height={20}
-                />
-                
-                <label className={cx('language__label')}>EN</label>
-              </Option>
-
-              <Option className = {cx('language-options')}>
-                <Image
-                  src={'/images/vietnamese.png'}
-                  alt="VietNamese Langague"
-                  width={28}
-                  height={20}
-                />
-                
-                <label className={cx('language__label')}>VIE</label>
-              </Option>
-            </Select>
-          </li>
-
-          <li className={cx('nav__item')}>
-            <a href="#" className={cx('nav__login')}>Đăng nhập</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <StyledLogin href="#">Đăng nhập</StyledLogin>
+      </NavbarContainer>
+    </HeaderContainer>
   );
 };
 
