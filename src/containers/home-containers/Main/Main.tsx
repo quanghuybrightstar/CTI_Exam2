@@ -28,6 +28,12 @@ const ItemContainer = styled.div`
   border-radius: 0.6rem;
   transition: transform ease-in 0.1s;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 1.3rem 0 rgba(0, 0, 0, 0.05);
+  }
+  cursor: pointer;
 `;
 
 const RestaurantTextInfo = styled.div`
@@ -39,6 +45,11 @@ const RestaurantName = styled.div`
   font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 0.8rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
 `;
 
 const RestaurantInfoWrapprer = styled.div`
@@ -52,6 +63,11 @@ const RestaurantInfoText = styled.div`
   font-size: 0.8rem;
   margin-left: 1.1rem;
 `;
+
+const RestaurantKilometers = styled.a`
+  display: inline-block;
+  margin-left: 0.25rem;
+`
 
 const RestaurantStatusText = styled.div`
   color: #1dac0e;
@@ -69,20 +85,20 @@ const RestaurantTimeContainer = styled.div`
   justify-content: space-between;
   flex: 1;
   margin-left: 0.8rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 `;
 
 const RestaurantTimeContainerFirst = styled.div`
   background: rgba(46, 146, 255, 0.2);
   border-radius: 0.65rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.35rem;
   text-align: center;
 `;
 
 const RestaurantTimeContainerSecond = styled.div`
   background: rgba(29, 172, 14, 0.2);
   border-radius: 0.65rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.35rem;
   text-align: center;
 `;
 
@@ -156,17 +172,17 @@ const IconWrapper = styled.div`
 `;
 
 const IconHeartWrapper = styled.div`
-  padding: 0.2rem 0.4rem 0.06rem;
+  padding: 0.3rem 0.4rem 0;
   background: #f24405;
   border-radius: 50%;
 `;
 
 const SaleOffWrapper = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: white;
   background: #1dac0e;
   position: absolute;
-  padding: 0.3rem 0.5rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 0.6rem;
   border: #1dac0e;
   position: absolute;
@@ -187,12 +203,17 @@ const Main: React.FC = () => {
                 <ItemContainer>
                   <StyledImage src={restaurant.urlImage} />
                   <RestaurantTextInfo>
-                    <RestaurantName>{restaurant.name}</RestaurantName>
+                    <RestaurantName title={restaurant.name}>
+                      {restaurant.name}
+                    </RestaurantName>
 
                     <RestaurantInfoWrapprer>
                       <FaMapMarkerAlt size={'1.5rem'} />
                       <RestaurantInfoText>
                         {restaurant.address}
+                        <RestaurantKilometers href='#'>
+                          {restaurant.kilometers}
+                        </RestaurantKilometers>
                       </RestaurantInfoText>
                     </RestaurantInfoWrapprer>
 

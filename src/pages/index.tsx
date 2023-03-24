@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import HomeComponent from '@/src/components/home-components/HomeComponents';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const StyledHTML = styled.div`
   font-size: 62.5% !important;
@@ -32,4 +33,4 @@ export default function Home() {
       </Body>
     </StyledHTML>
   );
-}
+};
